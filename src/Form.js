@@ -1,8 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addName } from "./actions/postAction";
 
 class Form extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: "",
     };
@@ -18,10 +20,14 @@ class Form extends React.Component {
       name: this.state.name,
     };
 
-    console.log(formData);
+    this.props.dispatch(addName(formData));
+
+    // console.log(formData);
+    this.setState({ name: "" });
   };
 
-  render() {
+  render(props) {
+    console.log("props", this.props.name);
     return (
       <div>
         <h1>Form Page</h1>
@@ -35,9 +41,16 @@ class Form extends React.Component {
           />
           <input type="submit" />
         </form>
+        <h1>name{this.props.name}</h1>
       </div>
     );
   }
 }
 
-export default Form;
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts,
+  };
+};
+
+export default connect(mapStateToProps)(Form);
