@@ -12,26 +12,18 @@ class Form extends React.Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = {
-      name: this.state.name,
-    };
-
-    this.props.dispatch(addName(formData));
-
-    // console.log(formData);
-    this.setState({ name: "" });
+    this.props.dispatch(addName(e.target.value));
   };
 
   render(props) {
-    console.log("props", this.props.name);
+    let str = this.props.posts;
+    let rev = str.split("").reverse().join("");
+    console.log("props", rev);
+
     return (
       <div>
         <h1>Form Page</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <label htmlFor="mame">Enter Name</label>
           <input
             type="text"
@@ -39,9 +31,8 @@ class Form extends React.Component {
             value={this.state.name}
             onChange={this.handleChange}
           />
-          <input type="submit" />
         </form>
-        <h1>name{this.props.name}</h1>
+        <h1>name:- {rev}</h1>
       </div>
     );
   }
