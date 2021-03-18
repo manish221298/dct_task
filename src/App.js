@@ -3,8 +3,7 @@ import Form from "./Form";
 
 function App(props) {
   return (
-    <div>
-      <h1>manish</h1>
+    <div style={{ textAlign: "center" }}>
       <Form />
     </div>
   );

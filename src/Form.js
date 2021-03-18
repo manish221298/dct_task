@@ -22,7 +22,7 @@ class Form extends React.Component {
 
     return (
       <div>
-        <h1>Form Page</h1>
+        <h1>Component</h1>
         <form>
           <label htmlFor="mame">Enter Name</label>
           <input
